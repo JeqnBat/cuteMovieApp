@@ -1,3 +1,22 @@
+/**
+ * Title : CUTE MOVIE APP
+ * Author : JEAN-BAPTISTE PELLIER
+ * Tags : ES6 / REACT APP / ASYNC AWAIT
+ */
+
+/* ==================== CSS INDEX FILE ====================
+
+  1. IMPORTS
+  2. GENERAL PAGE SETTINGS
+
+/* 1. IMPORTS
+________________________________________________________ */
+/* @import 'styles/mobile.css';
+@import 'styles/home-screen.css';
+@import 'styles/footer.css'; */
+
+/* 2. GENERAL SETTINGS
+________________________________________________________ */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
