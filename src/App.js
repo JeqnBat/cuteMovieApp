@@ -1,12 +1,8 @@
-import { cuteMoviesDB } from './data/cuteMoviesDB.js'
-import getData from './Fetcher.js'
+import Page from './components/Page'
 
-function App() {
-  console.log(getData(cuteMoviesDB))
+const App = () => {
   return (
-    <div>
-      CPT
-    </div>
+    <Page />
   )
 }
 

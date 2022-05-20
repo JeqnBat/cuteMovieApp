@@ -1,0 +1,22 @@
+/**
+ * COMPONENT : Ratio.js
+ */
+.ratio-bar {
+  position: relative;
+  height: 4px;
+  width: 150px;
+  margin: 10px 0;
+  background: lightslategray;
+}
+.ratio-bar::before {
+  position: absolute;
+  left: 0;
+  content: '';
+  height: 4px;
+  width: var(--width);
+  background: antiquewhite;
+}
+.ratio-number {
+  margin-left: 15px;
+  width: auto;
+}

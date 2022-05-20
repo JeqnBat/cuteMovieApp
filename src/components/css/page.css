@@ -1,0 +1,35 @@
+/**
+ * COMPONENT : Page.js
+ */
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+}
+#movie-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 999px) {
+  #wrapper {
+    width: auto;
+  }
+}

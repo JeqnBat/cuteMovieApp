@@ -1,0 +1,34 @@
+/**
+ * COMPONENT : MovieCard.js
+ */
+
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  width: 260px;
+  border: 1px solid antiquewhite;
+  padding: 15px;
+  margin: 10px;
+  background: royalblue;
+}
+.item *:not(.ratio-bar, .ratio-number, img) {
+  width: 100%;
+}
+.item h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.like-count {
+  display: flex;
+  width: auto!important
+}
+.item img {
+  cursor: pointer;
+  margin-right: 6px;
+  filter: invert();
+}
+.item img:nth-child(3) {
+  margin-left: 20px;
+  margin-top: 5px;
+  transform: rotate(180deg);
+}
