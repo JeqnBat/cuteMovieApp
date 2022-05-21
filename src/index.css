@@ -8,8 +8,9 @@
 ________________________________________________________ */
 body {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
+  min-height: 100vh;
   background: linear-gradient(royalblue, midnightblue);
   color: white;
   margin: 0;

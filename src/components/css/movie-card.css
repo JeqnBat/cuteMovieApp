@@ -1,16 +1,15 @@
 /**
  * COMPONENT : MovieCard.js
  */
-
 .item {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  width: 260px;
+  width: 270px;
   border: 2px solid white;
   padding: 15px;
   margin: 10px;
-  background: antiquewhite;
+  background: radial-gradient(antiquewhite, silver);
   color: rgb(41, 41, 41);
   filter: drop-shadow(0 0 4px silver);
 }
@@ -18,20 +17,49 @@
   width: 100%;
 }
 .item h1 {
+  font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
+  margin-bottom: 3px;
+}
+.item h2 {
+  font-weight: lighter;
+  font-size: 1rem;
+  text-align: center;
+  margin: 0;
+}
+.spacer {
+  height: 50px;
 }
 .like-count {
   display: flex;
+  align-items: flex-start;
   width: auto!important;
   margin-left: auto;
+  font-size: .8rem;
 }
 .item img {
   cursor: pointer;
-  margin-right: 4px;
+  margin-right: 3px;
 }
 .item img:nth-child(3) {
   margin-left: 10px;
-  margin-top: 5px;
+  margin-top: 3px;
   transform: rotate(180deg);
+}
+.cross {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: .75rem;
+  width: auto!important;
+  opacity: .5;
+  cursor: pointer;
+}
+.cross:hover {
+  opacity: 1;
+  color: white;
+}
+.d-none {
+  display: none;
 }

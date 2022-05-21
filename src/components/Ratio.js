@@ -10,9 +10,9 @@ const Ratio = ({likes, dislikes}) => {
   }
   
   // Sets .ratio::before width property using a variable
-  const lengthInPx = calculate(likes, dislikes) + '%'
+  const length = calculate(likes, dislikes) + '%'
   const beforeStyle = {
-    '--width' : lengthInPx
+    '--width' : length
   }
 
   return (
