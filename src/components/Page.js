@@ -41,7 +41,7 @@ const Page = () => {
           />
         ))}
       </div>
-      <Footer mentions="légales" />
+      <Footer mentions="mentions légales" />
     </div>
   )
 }
