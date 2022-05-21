@@ -8,7 +8,7 @@ const Ratio = ({likes, dislikes}) => {
     const percent = (likes / sum).toFixed(2) * 100
     return percent
   }
-
+  
   // Sets .ratio::before width property using a variable
   const lengthInPx = calculate(likes, dislikes) + '%'
   const beforeStyle = {

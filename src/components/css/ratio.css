@@ -4,9 +4,9 @@
 .ratio-bar {
   position: relative;
   height: 4px;
-  width: 150px;
+  width: 100px;
   margin: 10px 0;
-  background: lightslategray;
+  background: silver;
 }
 .ratio-bar::before {
   position: absolute;
@@ -14,9 +14,9 @@
   content: '';
   height: 4px;
   width: var(--width);
-  background: antiquewhite;
+  background: lightslategrey;
 }
 .ratio-number {
-  margin-left: 15px;
+  margin-left: 10px;
   width: auto;
 }

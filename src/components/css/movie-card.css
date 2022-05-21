@@ -5,11 +5,14 @@
 .item {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
   width: 260px;
-  border: 1px solid antiquewhite;
+  border: 2px solid white;
   padding: 15px;
   margin: 10px;
-  background: royalblue;
+  background: antiquewhite;
+  color: rgb(41, 41, 41);
+  filter: drop-shadow(0 0 4px silver);
 }
 .item *:not(.ratio-bar, .ratio-number, img) {
   width: 100%;
@@ -20,15 +23,15 @@
 }
 .like-count {
   display: flex;
-  width: auto!important
+  width: auto!important;
+  margin-left: auto;
 }
 .item img {
   cursor: pointer;
-  margin-right: 6px;
-  filter: invert();
+  margin-right: 4px;
 }
 .item img:nth-child(3) {
-  margin-left: 20px;
+  margin-left: 10px;
   margin-top: 5px;
   transform: rotate(180deg);
 }

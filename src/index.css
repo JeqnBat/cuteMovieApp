@@ -10,7 +10,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: royalblue;
+  background: linear-gradient(royalblue, midnightblue);
   color: white;
   margin: 0;
   padding: 0;
