@@ -24,6 +24,6 @@ footer {
 /* Responsive layout */
 @media screen and (max-width: 999px) {
   #wrapper, header {
-    width: auto;
+    width: auto!important;
   }
 }
