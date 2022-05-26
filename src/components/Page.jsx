@@ -3,22 +3,21 @@ import Header from './Header'
 import MovieCard from './MovieCard'
 import Footer from './Footer'
 import React, { useEffect, useState } from 'react'
-import { cuteMoviesDB } from '../data/cuteMoviesDB'
+import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const Page = () => {
   // HOOKS _______________________________________________ *
-  const [movies, setMovies] = useState([])
-  useEffect(() => {load(cuteMoviesDB)}, [])
-  // CUSTOM FUNCTIONS ____________________________________ *
+  const [hack, setHack] = useState(false)
+  const movies = useStoreState(state => state.movies)
+  const fetchMovies = useStoreActions(actions => actions.fetchMovies)
   // Loads data
-  async function load(db) {
-    const feed = await db
-    setMovies(feed)
-  }
-  const search = (selection) => {
-    const result = movies.filter((el) => el.category === selection)
-    setMovies(result)
-  }
+  useEffect(() => {
+    fetchMovies()
+    setTimeout(() => {
+      setHack(!hack)
+    }, 100)
+    // eslint-disable-next-line
+  }, [])
   // Gets movies categories
   const moviesCat = movies.map((el) => {
     return el.category
@@ -29,7 +28,7 @@ const Page = () => {
 
   return (
     <div id="wrapper">
-      <Header categories={newCat} onClick={search}/>
+      <Header categories={newCat} />
       <div id="movie-grid">
         {movies.map((el) => (
           <MovieCard 

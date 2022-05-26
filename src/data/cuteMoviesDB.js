@@ -1,4 +1,4 @@
-const movies = [
+const data = [
   {
     id: '1',
     title: 'Oceans 8',
@@ -62,4 +62,4 @@ const movies = [
   },
 ]
 
-export const cuteMoviesDB = new Promise((resolve, reject) => setTimeout(resolve, 100, movies))
+export const cuteMoviesDB = new Promise((resolve, reject) => setTimeout(resolve, 100, data))
