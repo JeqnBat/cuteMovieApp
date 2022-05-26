@@ -7,15 +7,16 @@ import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const Page = () => {
   // HOOKS _______________________________________________ *
-  const [hack, setHack] = useState(false)
+  const [hasLoaded, setHasLoaded] = useState(false)
   const movies = useStoreState(state => state.movies)
   const fetchMovies = useStoreActions(actions => actions.fetchMovies)
   // Loads data
   useEffect(() => {
-    fetchMovies()
-    setTimeout(() => {
-      setHack(!hack)
-    }, 100)
+    const a = async () => {
+      await fetchMovies()
+      setHasLoaded(!hasLoaded)
+    }
+    a()
     // eslint-disable-next-line
   }, [])
   // Gets movies categories
