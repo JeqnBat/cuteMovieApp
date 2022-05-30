@@ -1,8 +1,8 @@
 import Page from './components/Page'
-import model from './data/model'
+import modal from './data/modal'
 import { StoreProvider, createStore } from 'easy-peasy'
 
-const store = createStore(model)
+const store = createStore(modal)
 
 const App = () => {
   return (

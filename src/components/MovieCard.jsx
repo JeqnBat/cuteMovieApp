@@ -6,15 +6,11 @@ import React, { useState } from 'react'
 
 const MovieCard = ({ id, title, cat, likes, dislikes }) => {
   // HOOKS _______________________________________________ *
-  const [cardIsVisible, setCardVisibility] = useState(true)
   const [likesCount, setLikesCount] = useState(likes)
   const [dislikesCount, setDislikesCount] = useState(dislikes)
   const [liked, setLiked] = useState(false)
   const [disliked, setDisliked] = useState(false)
-
-  const removeCard = () => {
-    setCardVisibility(!cardIsVisible)
-  }
+  // CUSTOM FUNCTIONS ____________________________________ *
   const addLike = () => {
     if (liked) {
       setLikesCount(likesCount - 1)
@@ -41,16 +37,14 @@ const MovieCard = ({ id, title, cat, likes, dislikes }) => {
       setLiked(false)
     }
   }
-
-  // CUSTOM FUNCTIONS ____________________________________ *
   const short = (nb) => {
     const newNb = nb.toString()
     return Number(newNb.slice(0, 2)) + ',' + Number(newNb.slice(3, 4)) + 'K'
   }
-
+  // JSX _________________________________________________ *
   return (
-    <section key={id} className={cardIsVisible ? 'item' : 'item d-none'}>
-      <nav className="cross" onClick={removeCard}>╳</nav>
+    <section key={id} id={id} className={'item'}>
+      <nav className="cross">╳</nav>
       <h1>{title}</h1>
       <h2>{cat}</h2>
       <div className="spacer"></div>

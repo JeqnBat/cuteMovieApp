@@ -62,4 +62,4 @@ const data = [
   },
 ]
 
-export const cuteMoviesDB = new Promise((resolve, reject) => setTimeout(resolve, 100, data))
+export const cuteMoviesDB = new Promise((resolve, reject) => setTimeout(resolve, 1000, data))

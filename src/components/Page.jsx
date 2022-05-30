@@ -8,15 +8,15 @@ import { useStoreState, useStoreActions } from 'easy-peasy'
 const Page = () => {
   // HOOKS _______________________________________________ *
   const [hasLoaded, setHasLoaded] = useState(false)
+  // From Model.js
   const movies = useStoreState(state => state.movies)
   const fetchMovies = useStoreActions(actions => actions.fetchMovies)
-  // Loads data
+
   useEffect(() => {
-    const a = async () => {
+    (async () =>  {
       await fetchMovies()
       setHasLoaded(!hasLoaded)
-    }
-    a()
+    })()
     // eslint-disable-next-line
   }, [])
   // Gets movies categories
@@ -26,7 +26,7 @@ const Page = () => {
   const newCat = moviesCat.filter((value, index, self) => {
     return self.indexOf(value) === index
   })
-
+  // JSX _________________________________________________ *
   return (
     <div id="wrapper">
       <Header categories={newCat} />
@@ -34,6 +34,7 @@ const Page = () => {
         {movies.map((el) => (
           <MovieCard 
             key={el.id} 
+            id={el.id}
             title={el.title} 
             cat={el.category} 
             likes={el.likes} 

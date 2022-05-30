@@ -6,15 +6,19 @@ const model = {
   // Thunks
   fetchMovies: thunk(async actions => {
     try {
-      const movies = await cuteMoviesDB
-      actions.load(movies)
+      const newMovies = await cuteMoviesDB
+      actions.setMovies(newMovies)
     } catch(e) {
       console.log(e)
     }
   }),
   // Actions
-  load: action((state, movies) => {
-    state.movies = movies
+  setMovies: action((state, payload) => {
+    state.movies = payload
+
+  }),
+  removeMovieCard: action((state, id) => {
+    state.movies = state.movies.filter(el => el.id !== id)
   })
 }
 
