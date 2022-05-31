@@ -2,23 +2,21 @@ import './css/page.css'
 import Header from './Header'
 import MovieCard from './MovieCard'
 import Footer from './Footer'
-import React, { useEffect, useState } from 'react'
-import { useStoreState, useStoreActions } from 'easy-peasy'
+import { useStoreState } from 'easy-peasy'
 
 const Page = () => {
   // HOOKS _______________________________________________ *
-  const [hasLoaded, setHasLoaded] = useState(false)
+
   // From Model.js
   const movies = useStoreState(state => state.movies)
-  const fetchMovies = useStoreActions(actions => actions.fetchMovies)
 
-  useEffect(() => {
-    (async () =>  {
-      await fetchMovies()
-      setHasLoaded(!hasLoaded)
-    })()
-    // eslint-disable-next-line
-  }, [])
+  // useEffect(() => {
+  //   (async () =>  {
+  //     await fetchMovies()
+  //     setHasLoaded(!hasLoaded)
+  //   })()
+  //   // eslint-disable-next-line
+  // }, [])
   // Gets movies categories
   const moviesCat = movies.map((el) => {
     return el.category
@@ -32,14 +30,7 @@ const Page = () => {
       <Header categories={newCat} />
       <div id="movie-grid">
         {movies.map((el) => (
-          <MovieCard 
-            key={el.id} 
-            id={el.id}
-            title={el.title} 
-            cat={el.category} 
-            likes={el.likes} 
-            dislikes={el.dislikes} 
-          />
+          <MovieCard key={el.id} props={el}/>
         ))}
       </div>
       <Footer mentions="mentions légales" />

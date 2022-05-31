@@ -1,74 +1,61 @@
 import './css/movie-card.css'
-import Ratio from './Ratio'
 import Thumb from '../img/thumb-up.svg'
 import UsedThumb from '../img/thumb-up-filled.svg'
+import { rounded } from '../logic/logic.js'
+import Ratio from './Ratio'
+import { useStoreActions } from 'easy-peasy'
 import React, { useState } from 'react'
 
-const MovieCard = ({ id, title, cat, likes, dislikes }) => {
+const MovieCard = ({ props }) => {
   // HOOKS _______________________________________________ *
-  const [likesCount, setLikesCount] = useState(likes)
-  const [dislikesCount, setDislikesCount] = useState(dislikes)
-  const [liked, setLiked] = useState(false)
+  const [state, setState] = useState(props)
+  const [likesCount, setLikesCount] = useState(props.likes)
+  const [isLiked, setIsliked] = useState(false)
   const [disliked, setDisliked] = useState(false)
   // CUSTOM FUNCTIONS ____________________________________ *
-  const addLike = () => {
-    if (liked) {
-      setLikesCount(likesCount - 1)
-      setLiked(false)
-    } else {
-      setLikesCount(likesCount + 1)
-      setLiked(true)
-    }
-    if (disliked) {
-      setDislikesCount(dislikesCount - 1)
-      setDisliked(false)
-    }
+  const remove = useStoreActions(actions => actions.remove)
+  const like = useStoreActions(actions => actions.like)
+  const dislike = useStoreActions(actions => actions.dislike)
+
+  const addLike = (id) => {
+    like(id)
+    setIsliked(!isLiked)
+    setLikesCount(likesCount + 1);
   }
-  const addDislike = () => {
-    if (disliked) {
-      setDislikesCount(dislikesCount - 1)
-      setDisliked(false)
-    } else {
-      setDislikesCount(dislikesCount + 1)
-      setDisliked(true)
-    }
-    if (liked) {
-      setLikesCount(likesCount - 1)
-      setLiked(false)
-    }
+  const addDislike = (id) => {
+    dislike(id)
+    setDisliked(!disliked)
   }
-  const short = (nb) => {
-    const newNb = nb.toString()
-    return Number(newNb.slice(0, 2)) + ',' + Number(newNb.slice(3, 4)) + 'K'
-  }
+
+  
   // JSX _________________________________________________ *
   return (
-    <section key={id} id={id} className={'item'}>
-      <nav className="cross">╳</nav>
-      <h1>{title}</h1>
-      <h2>{cat}</h2>
+    <section key={state.id} id={state.id} className={'item'}>
+      <nav className="cross" onClick={() => remove(state.id)}>╳</nav>
+      <h1>{state.title}</h1>
+      <h2>{state.cat}</h2>
       <div className="spacer"></div>
-      <Ratio likes={likesCount} dislikes={dislikesCount}/>
+      <Ratio likes={likesCount} dislikes={state.dislikes}/>
       <div className="like-count">
         <img
-          onClick={addLike} 
+          onClick={() => addLike(state.id)} 
           alt="Thumb-up" 
-          src={liked ? UsedThumb : Thumb} 
+          src={isLiked ? UsedThumb : Thumb} 
           height="18px" 
           width="18px">
         </img>
         <span>
-          {likesCount > 999 ? short(likesCount) : likesCount} 
+          {likesCount > 999 ? rounded(likesCount) : likesCount} 
         </span>
         <img 
-          onClick={addDislike} 
+          onClick={() => addDislike(state.id)}
           alt="Thumb-down" 
           src={disliked ? UsedThumb : Thumb} 
           height="18px" 
           width="18px">
         </img>
         <span>
-          {dislikesCount > 999 ? short(dislikesCount) : dislikesCount} 
+          {state.dislikes > 999 ? rounded(state.dislikes) : state.dislikes} 
         </span>
       </div>
     </section>
