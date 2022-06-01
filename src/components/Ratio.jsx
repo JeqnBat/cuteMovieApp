@@ -1,16 +1,9 @@
 import './css/ratio.css'
+import { percent } from '../data/logic'
 
 const Ratio = ({likes, dislikes}) => {
-
-  // Returns movie 'likes/dislikes' ratio in number type 
-  function calculate(likes, dislikes) {
-    const sum = likes + dislikes
-    const percent = (likes / sum).toFixed(2) * 100
-    return percent
-  }
-  
   // Sets .ratio::before width property using a variable
-  const length = calculate(likes, dislikes) + '%'
+  const length = percent(likes, dislikes) + '%'
   const beforeStyle = {
     '--width' : length
   }
@@ -18,7 +11,7 @@ const Ratio = ({likes, dislikes}) => {
   return (
     <>
     <div className="ratio-bar" style={beforeStyle}></div>
-    <div className="ratio-number">{calculate(likes, dislikes)}%</div>
+    <div className="ratio-number">{percent(likes, dislikes)}%</div>
     </>
   )
 }

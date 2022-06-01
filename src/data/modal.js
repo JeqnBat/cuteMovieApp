@@ -2,6 +2,7 @@ import { action, thunk } from 'easy-peasy'
 import { cuteMoviesDB } from './cuteMoviesDB'
 
 const model = {
+  fdp: 'mais ui mais ui',
   movies: [
     {
       id: '1',
@@ -77,22 +78,24 @@ const model = {
   // Actions
   remove: action((state, id) => {
     state.movies = state.movies.filter(el => el.id !== id)
+    console.log(state.movies.length);
   }),
   like: action((state, id) => {
-    state.movies.map((movie) => {
+    state.movies.forEach((movie) => {
       if(movie.id === id) {
-        return movie.likes = movie.likes + 1
+        movie.likes = movie.likes + 1
       }
-      return id
     })
   }),
   dislike: action((state, id) => {
-    state.movies.map((movie) => {
+    state.movies.forEach((movie) => {
       if(movie.id === id) {
-        return movie.dislikes = movie.dislikes + 1
+        movie.dislikes = movie.dislikes + 1
       }
-      return id
     })
+  }),
+  clickClick: action((state, payload) => {
+    state.fdp = payload
   })
 }
 

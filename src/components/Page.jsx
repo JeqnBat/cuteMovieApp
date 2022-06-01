@@ -2,13 +2,16 @@ import './css/page.css'
 import Header from './Header'
 import MovieCard from './MovieCard'
 import Footer from './Footer'
-import { useStoreState } from 'easy-peasy'
+import { useStoreState, useStoreActions } from 'easy-peasy'
+import React, { useState, useEffect } from 'react'
 
 const Page = () => {
   // HOOKS _______________________________________________ *
+  const { movies } = useStoreState(store => store)
+  const { fdp } = useStoreState(store => store)
+  const { clickClick } = useStoreActions(actions => actions)
 
-  // From Model.js
-  const movies = useStoreState(state => state.movies)
+  const [state, setState] = useState(movies)
 
   // useEffect(() => {
   //   (async () =>  {
@@ -17,10 +20,9 @@ const Page = () => {
   //   })()
   //   // eslint-disable-next-line
   // }, [])
+
   // Gets movies categories
-  const moviesCat = movies.map((el) => {
-    return el.category
-  })
+  const moviesCat = state.map(el => el.category)
   const newCat = moviesCat.filter((value, index, self) => {
     return self.indexOf(value) === index
   })
@@ -29,10 +31,11 @@ const Page = () => {
     <div id="wrapper">
       <Header categories={newCat} />
       <div id="movie-grid">
-        {movies.map((el) => (
+        {state.map((el) => (
           <MovieCard key={el.id} props={el}/>
         ))}
       </div>
+      <button onClick={() => clickClick('try again')}>{fdp}</button>
       <Footer mentions="mentions légales" />
     </div>
   )

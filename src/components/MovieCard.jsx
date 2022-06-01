@@ -1,61 +1,45 @@
 import './css/movie-card.css'
 import Thumb from '../img/thumb-up.svg'
-import UsedThumb from '../img/thumb-up-filled.svg'
-import { rounded } from '../logic/logic.js'
+// import UsedThumb from '../img/thumb-up-filled.svg'
+import { rounded } from '../data/logic.js'
 import Ratio from './Ratio'
 import { useStoreActions } from 'easy-peasy'
-import React, { useState } from 'react'
 
 const MovieCard = ({ props }) => {
-  // HOOKS _______________________________________________ *
-  const [state, setState] = useState(props)
-  const [likesCount, setLikesCount] = useState(props.likes)
-  const [isLiked, setIsliked] = useState(false)
-  const [disliked, setDisliked] = useState(false)
-  // CUSTOM FUNCTIONS ____________________________________ *
   const remove = useStoreActions(actions => actions.remove)
   const like = useStoreActions(actions => actions.like)
   const dislike = useStoreActions(actions => actions.dislike)
 
-  const addLike = (id) => {
-    like(id)
-    setIsliked(!isLiked)
-    setLikesCount(likesCount + 1);
-  }
-  const addDislike = (id) => {
-    dislike(id)
-    setDisliked(!disliked)
-  }
-
-  
   // JSX _________________________________________________ *
   return (
-    <section key={state.id} id={state.id} className={'item'}>
-      <nav className="cross" onClick={() => remove(state.id)}>╳</nav>
-      <h1>{state.title}</h1>
-      <h2>{state.cat}</h2>
+    <section key={props.id} id={props.id} className={'item'}>
+      <nav className="cross" onClick={() => remove(props.id)}>╳</nav>
+      <h1>{props.title}</h1>
+      <h2>{props.cat}</h2>
       <div className="spacer"></div>
-      <Ratio likes={likesCount} dislikes={state.dislikes}/>
+      <Ratio likes={props.likes} dislikes={props.dislikes}/>
       <div className="like-count">
         <img
-          onClick={() => addLike(state.id)} 
+          onClick={() => like(props.id)} 
           alt="Thumb-up" 
-          src={isLiked ? UsedThumb : Thumb} 
+          // src={isLiked ? UsedThumb : Thumb} 
+          src={Thumb} 
           height="18px" 
           width="18px">
         </img>
         <span>
-          {likesCount > 999 ? rounded(likesCount) : likesCount} 
+          {props.likes > 999 ? rounded(props.likes) : props.likes} 
         </span>
         <img 
-          onClick={() => addDislike(state.id)}
+          onClick={() => dislike(props.id)}
           alt="Thumb-down" 
-          src={disliked ? UsedThumb : Thumb} 
+          // src={disliked ? UsedThumb : Thumb} 
+          src={Thumb} 
           height="18px" 
           width="18px">
         </img>
         <span>
-          {state.dislikes > 999 ? rounded(state.dislikes) : state.dislikes} 
+          {props.dislikes > 999 ? rounded(props.dislikes) : props.dislikes} 
         </span>
       </div>
     </section>
