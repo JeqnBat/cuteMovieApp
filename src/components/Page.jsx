@@ -2,17 +2,17 @@ import './css/page.css'
 import Header from './Header'
 import MovieCard from './MovieCard'
 import Footer from './Footer'
-import { useStoreState } from 'easy-peasy'
+import { useStoreState, useStoreActions } from 'easy-peasy'
+import React, { useEffect } from 'react'
 
 const Page = () => {
   const { movies } = useStoreState((state) => state)
-  // useEffect(() => {
-  //   (async () =>  {
-  //     await fetchMovies()
-  //     setHasLoaded(!hasLoaded)
-  //   })()
-  //   // eslint-disable-next-line
-  // }, [])
+  const { fetchMovies } = useStoreActions((actions) => actions)
+  
+  useEffect(() => {
+    fetchMovies()
+    // eslint-disable-next-line
+  }, [])
 
   // Gets movies categories
   const moviesCat = movies.map(movie => movie.category)
