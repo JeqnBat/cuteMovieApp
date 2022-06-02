@@ -7,7 +7,7 @@ const store = createStore(modal)
 const App = () => {
   return (
     <StoreProvider store={store}>
-      <Page/>
+      <Page />
     </StoreProvider>
   )
 }

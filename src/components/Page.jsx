@@ -2,17 +2,10 @@ import './css/page.css'
 import Header from './Header'
 import MovieCard from './MovieCard'
 import Footer from './Footer'
-import { useStoreState, useStoreActions } from 'easy-peasy'
-import React, { useState, useEffect } from 'react'
+import { useStoreState } from 'easy-peasy'
 
 const Page = () => {
-  // HOOKS _______________________________________________ *
-  const { movies } = useStoreState(store => store)
-  const { fdp } = useStoreState(store => store)
-  const { clickClick } = useStoreActions(actions => actions)
-
-  const [state, setState] = useState(movies)
-
+  const { movies } = useStoreState((state) => state)
   // useEffect(() => {
   //   (async () =>  {
   //     await fetchMovies()
@@ -22,22 +15,21 @@ const Page = () => {
   // }, [])
 
   // Gets movies categories
-  const moviesCat = state.map(el => el.category)
+  const moviesCat = movies.map(movie => movie.category)
   const newCat = moviesCat.filter((value, index, self) => {
     return self.indexOf(value) === index
   })
-  // JSX _________________________________________________ *
+
   return (
-    <div id="wrapper">
+    <main id="wrapper">
       <Header categories={newCat} />
-      <div id="movie-grid">
-        {state.map((el) => (
-          <MovieCard key={el.id} props={el}/>
+      <section id="movie-grid">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} props={movie} />
         ))}
-      </div>
-      <button onClick={() => clickClick('try again')}>{fdp}</button>
+      </section>
       <Footer mentions="mentions légales" />
-    </div>
+    </main>
   )
 }
 
