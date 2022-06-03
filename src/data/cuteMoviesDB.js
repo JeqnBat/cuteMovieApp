@@ -27,8 +27,8 @@ const data = [
     id: '4',
     title: 'Sans un bruit',
     category: 'Thriller',
-    likes: 6,
-    dislikes: 6,
+    likes: 11,
+    dislikes: 9,
     liked: false,
     disliked: false
   }, {

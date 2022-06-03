@@ -1,43 +1,55 @@
-import { action, thunk } from 'easy-peasy'
+import { action, thunk, debug } from 'easy-peasy'
 import { cuteMoviesDB } from './cuteMoviesDB'
-import { addLike, addDislike } from './logic'
+import { sortLike, sortDislike } from '../logic/logic'
 
 const modal = {
-  movies: [],
+  allMovies: [],
+  visibleMovies: [],
+  selector: {
+    begin: 0,
+    end: 4
+  },
   // THUNKS
   fetchMovies: thunk(async actions => {
     try {
       const newMovies = await cuteMoviesDB
       actions.add(newMovies)
+      actions.selectMovies()
     } catch(e) {
       console.log(e)
     }
   }),
   // ACTIONS
   add: action((state, payload) => {
-    state.movies = payload
+    state.allMovies = payload
   }),
   remove: action((state, payload) => {
-    state.movies = state.movies.filter(el => el.id !== payload.id)
+    state.visibleMovies = state.visibleMovies.filter(el => el.id !== payload.id)
   }),
   like: action((state, payload) => {
-    state.movies.map((movie) => {
+    state.visibleMovies.map((movie) => {
       if (movie.id === payload.id) {
-        addLike(movie)
+        sortLike(movie)
       }
       return movie
     })
   }),
   dislike: action((state, payload) => {
-    state.movies.map((movie) => {
+    state.visibleMovies.map((movie) => {
       if (movie.id === payload.id) {
-        addDislike(movie)
+        sortDislike(movie)
       }
       return movie
     })
   }),
   selectCat: action((state, payload) => {
-    state.movies = state.movies.filter(movie => movie.category === payload)
+    state.visibleMovies = state.visibleMovies.filter(movie => movie.category === payload)
+  }),
+  selectMovies: action((state) => {
+    state.visibleMovies = state.allMovies.slice(state.selector.begin, state.selector.end)
+  }),
+  updateSelector: action((state, payload)=> {
+    state.selector.end = payload
   })
 }
 

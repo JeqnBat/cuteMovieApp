@@ -7,10 +7,11 @@ const rounded = (nb) => {
 const percent = (firstVal, secondVal) => {
   const sum = firstVal + secondVal
   const percent = (firstVal / sum).toFixed(2) * 100
-  return percent
+  const noDecimals = percent.toString().split('.')[0]
+  return noDecimals
 }
 // Used in data/modal.js
-const addLike = (movie) => {
+const sortLike = (movie) => {
   if (movie.liked === false && movie.disliked === false) {
     movie.likes = movie.likes + 1
     movie.liked = !movie.liked
@@ -24,7 +25,7 @@ const addLike = (movie) => {
     movie.liked = !movie.liked
   }
 }
-const addDislike = (movie) => {
+const sortDislike = (movie) => {
   if (movie.liked === false && movie.disliked === false) {
     movie.dislikes = movie.dislikes + 1
     movie.disliked = !movie.disliked
@@ -39,4 +40,4 @@ const addDislike = (movie) => {
   }
 }
 
-export { rounded, percent, addLike, addDislike }
+export { rounded, percent, sortLike, sortDislike }

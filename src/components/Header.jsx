@@ -1,8 +1,15 @@
 import './css/header.css'
-import { useStoreActions } from 'easy-peasy'
+import { useStoreState, useStoreActions } from 'easy-peasy'
 
-const Header = ({ categories }) => {
+const Header = () => {
   const { selectCat } = useStoreActions((actions) => actions)
+  const { allMovies } = useStoreState((store) => store)
+
+  // Gets all UNIQUE categories & stores them in 'newCat'
+  const moviesCat = allMovies.map(movie => movie.category)
+  const newCat = moviesCat.filter((value, index, self) => {
+    return self.indexOf(value) === index
+  })
 
   return (
     <header>
@@ -10,7 +17,7 @@ const Header = ({ categories }) => {
       CUTE MOVIE APP
       <nav id="filter">
         <p>Catégories</p>
-          {categories.map((cat, index) => (
+          {newCat.map((cat, index) => (
             <div key={index} onClick={() => selectCat(cat)}>{cat}</div>
           ))}
       </nav>

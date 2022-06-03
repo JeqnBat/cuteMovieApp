@@ -1,5 +1,5 @@
 import './css/ratio.css'
-import { percent } from '../data/logic'
+import { percent } from '../logic/logic'
 
 const Ratio = ({likes, dislikes}) => {
   // Sets .ratio::before width property using a variable

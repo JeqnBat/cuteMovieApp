@@ -1,7 +1,7 @@
 import './css/movie-card.css'
 import Thumb from '../img/thumb-up.svg'
 import UsedThumb from '../img/thumb-up-filled.svg'
-import { rounded } from '../data/logic.js'
+import { rounded } from '../logic/logic.js'
 import Ratio from './Ratio'
 import { useStoreActions } from 'easy-peasy'
 
