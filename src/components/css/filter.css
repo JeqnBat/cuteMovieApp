@@ -1,0 +1,67 @@
+/**
+ * COMPONENT : Pagination.jsx
+ */
+#filter {
+  width: 100%;
+}
+header .spacer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+header .spacer > div {
+  width: 33%;
+  text-align: center;
+}
+header h3 {
+  font-weight: normal;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px;
+}
+header h3:hover {
+  color: blue;
+}
+header h3:active {
+  color: white;
+}
+#options {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+#options section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  text-align: center;
+  margin: 10px;
+}
+#options section p {
+  font-size: .75rem;
+  font-weight: lighter;
+  padding: 10px;
+}
+#options section > div {
+  font-size: .75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid silver;
+}
+#options section > div:hover {
+  background: dodgerblue;
+}
+.active {
+  background: dodgerblue;
+}
+.nav {
+  cursor: pointer;
+}
+.nav:hover {
+  color: blue;
+}

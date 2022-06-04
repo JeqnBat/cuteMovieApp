@@ -11,7 +11,7 @@ body {
   align-items: flex-start;
   justify-content: space-around;
   min-height: 100vh;
-  background: linear-gradient(royalblue, midnightblue);
+  background: royalblue;
   color: white;
   margin: 0;
   padding: 0;

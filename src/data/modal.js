@@ -1,4 +1,4 @@
-import { action, thunk, debug } from 'easy-peasy'
+import { action, thunk } from 'easy-peasy'
 import { cuteMoviesDB } from './cuteMoviesDB'
 import { sortLike, sortDislike } from '../logic/logic'
 
@@ -7,7 +7,8 @@ const modal = {
   visibleMovies: [],
   selector: {
     begin: 0,
-    end: 4
+    end: 4,
+    fraction: 4
   },
   // THUNKS
   fetchMovies: thunk(async actions => {
@@ -48,8 +49,21 @@ const modal = {
   selectMovies: action((state) => {
     state.visibleMovies = state.allMovies.slice(state.selector.begin, state.selector.end)
   }),
-  updateSelector: action((state, payload)=> {
+  updateSelector: action((state, payload) => {
+    if (state.selector.end )
     state.selector.end = payload
+    state.selector.fraction = payload
+  }),
+  prev: action((state) => {
+    state.selector.end = state.selector.begin
+    state.selector.begin = state.selector.begin - state.selector.fraction
+  }),
+  next: action((state) => {
+    if (state.selector.end > state.allMovies.length) {
+      return
+    }
+    state.selector.begin = state.selector.end
+    state.selector.end = state.selector.end + state.selector.fraction
   })
 }
 
