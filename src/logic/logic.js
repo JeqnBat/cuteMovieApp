@@ -11,7 +11,7 @@ const percent = (firstVal, secondVal) => {
   return noDecimals
 }
 // Used in data/modal.js
-const sortLike = (movie) => {
+const manageLike = (movie) => {
   if (movie.liked === false && movie.disliked === false) {
     movie.likes = movie.likes + 1
     movie.liked = !movie.liked
@@ -25,7 +25,7 @@ const sortLike = (movie) => {
     movie.liked = !movie.liked
   }
 }
-const sortDislike = (movie) => {
+const manageDislike = (movie) => {
   if (movie.liked === false && movie.disliked === false) {
     movie.dislikes = movie.dislikes + 1
     movie.disliked = !movie.disliked
@@ -40,4 +40,4 @@ const sortDislike = (movie) => {
   }
 }
 
-export { rounded, percent, sortLike, sortDislike }
+export { rounded, percent, manageLike, manageDislike }

@@ -1,14 +1,16 @@
-import { action, thunk } from 'easy-peasy'
+import { action, thunk, debug } from 'easy-peasy'
 import { cuteMoviesDB } from './cuteMoviesDB'
-import { sortLike, sortDislike } from '../logic/logic'
+import { manageLike, manageDislike } from '../logic/logic'
 
 const modal = {
   allMovies: [],
   visibleMovies: [],
+  moviesByCat: [],
   selector: {
     begin: 0,
     end: 4,
-    fraction: 4
+    instances: 4,
+    categories: []
   },
   // THUNKS
   fetchMovies: thunk(async actions => {
@@ -16,6 +18,7 @@ const modal = {
       const newMovies = await cuteMoviesDB
       actions.add(newMovies)
       actions.selectMovies()
+      actions.loadCat()
     } catch(e) {
       console.log(e)
     }
@@ -30,7 +33,7 @@ const modal = {
   like: action((state, payload) => {
     state.visibleMovies.map((movie) => {
       if (movie.id === payload.id) {
-        sortLike(movie)
+        manageLike(movie)
       }
       return movie
     })
@@ -38,7 +41,7 @@ const modal = {
   dislike: action((state, payload) => {
     state.visibleMovies.map((movie) => {
       if (movie.id === payload.id) {
-        sortDislike(movie)
+        manageDislike(movie)
       }
       return movie
     })
@@ -50,20 +53,36 @@ const modal = {
     state.visibleMovies = state.allMovies.slice(state.selector.begin, state.selector.end)
   }),
   updateSelector: action((state, payload) => {
-    if (state.selector.end )
-    state.selector.end = payload
-    state.selector.fraction = payload
+    let step = 0
+    state.selector.instances = payload
+    state.selector.begin = 0
+    state.selector.end = 0
+    while ((step < payload) && (state.selector.end < state.allMovies.length)) {
+      state.selector.end++
+      step++
+    }
   }),
   prev: action((state) => {
-    state.selector.end = state.selector.begin
-    state.selector.begin = state.selector.begin - state.selector.fraction
+    let i = 0
+    while ((state.selector.begin > 0) && (i < state.selector.instances)) {
+      i++
+      state.selector.begin--
+      state.selector.end--
+    }
   }),
   next: action((state) => {
-    if (state.selector.end > state.allMovies.length) {
-      return
+    let i = 0
+    while ((i < state.selector.instances) && (state.selector.end < state.allMovies.length)) {
+      i++
+      state.selector.begin++
+      state.selector.end++
     }
-    state.selector.begin = state.selector.end
-    state.selector.end = state.selector.end + state.selector.fraction
+  }),
+  loadCat: action((state) => {
+    const moviesCat = state.allMovies.map(movie => movie.category)
+    state.selector.categories = moviesCat.filter((value, index, self) => {
+      return self.indexOf(value) === index
+    })
   })
 }
 

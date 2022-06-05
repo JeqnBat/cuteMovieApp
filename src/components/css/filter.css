@@ -18,12 +18,15 @@ header h3 {
   font-size: 1rem;
   cursor: pointer;
   padding: 10px;
+  margin-left: 10px;
+  border: 1px solid var(--app-border);
+  width: min-content;
 }
 header h3:hover {
-  color: blue;
+  background-color: var(--app-hover);
 }
 header h3:active {
-  color: white;
+  background-color: var(--app-background);
 }
 #options {
   display: flex;
@@ -49,9 +52,12 @@ header h3:active {
   font-size: .75rem;
   text-transform: uppercase;
   cursor: pointer;
-  margin: 5px;
+  margin: 4px;
   padding: 10px;
-  border: 1px solid silver;
+  border: 1px solid var(--app-border);
+}
+#selector > div {
+  width: 14px;
 }
 #options section > div:hover {
   background: dodgerblue;

@@ -6,11 +6,11 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 277px;
-  border: 2px solid white;
+  border: 1px solid white;
   padding: 15px;
   margin: 10px;
   background: radial-gradient(antiquewhite, silver);
-  color: rgb(41, 41, 41);
+  color: var(--app-secondary);
   filter: drop-shadow(0 0 4px silver);
 }
 .item *:not(.ratio-bar, .ratio-number, img) {
@@ -58,7 +58,7 @@
 }
 .cross:hover {
   opacity: 1;
-  color: white;
+  color: var(--app-primary);
 }
 .d-none {
   display: none;

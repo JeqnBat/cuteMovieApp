@@ -34,7 +34,7 @@ const data = [
   }, {
     id: '5',
     title: 'Creed II',
-    category: 'Drame',
+    category: 'Drama',
     likes: 16,
     dislikes: 2,
     liked: false,

@@ -8,11 +8,9 @@ import React, { useEffect } from 'react'
 const Page = () => {
   const { visibleMovies } = useStoreState((state) => state)
   const { fetchMovies } = useStoreActions((actions) => actions)
-  const { selectMovies } = useStoreActions((actions) => actions)
 
   useEffect(() => {
     fetchMovies()
-    selectMovies()
     // eslint-disable-next-line
   }, [])
 
