@@ -1,3 +1,4 @@
+// @refresh reset
 import './css/movie-card.css'
 import Thumb from '../img/thumb-up.svg'
 import UsedThumb from '../img/thumb-up-filled.svg'

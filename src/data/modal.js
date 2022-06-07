@@ -1,4 +1,4 @@
-import { action, thunk, debug } from 'easy-peasy'
+import { action, thunk } from 'easy-peasy'
 import { cuteMoviesDB } from './cuteMoviesDB'
 import { manageLike, manageDislike } from '../logic/logic'
 

@@ -8,19 +8,33 @@ header {
   flex-wrap: wrap;
   width: 1000px;
 }
-header h1 {  
-  margin: 3rem;
-  font-size: 3rem;
-  font-style: italic;
-  font-family: 'Courier New', Courier, monospace;
+header h1 {
+  margin: 0;
+  font-size: 6rem;
+  font-family: 'baby_dollregular';
   font-weight: lighter;
+  transform: translateY(-70px);
+  background-color: var(--app-background);
+  background-image: linear-gradient(90deg, #00ffcc, #ffea00, #f262ff);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+#title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #logo {
   position: relative;
   background: url('../../img/bYoda1_2.png') no-repeat;
+  background-blend-mode: multiply;
   background-size: contain;
-  height: 180px;
-  width: 200px;
+  height: 183px;
+  width: 205px;
   margin-top: 20px;
   cursor: pointer;
 }

@@ -1,3 +1,4 @@
+// @refresh reset
 import './css/page.css'
 import Header from './Header'
 import MovieCard from './MovieCard'
