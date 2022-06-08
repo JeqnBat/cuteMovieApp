@@ -1,6 +1,33 @@
 /**
  * COMPONENT : Header.js
  */
+/* Responsive layout */
+@media screen and (max-width: 999px) {
+  header {
+    width: 100%!important;
+  }
+  header h1 {
+    font-size: 3rem!important;
+    transform: none!important;
+  }
+  #title {
+    flex-direction: column-reverse!important;
+  }
+  #options {
+    flex-wrap: wrap;
+  }
+  #options section {
+    flex-wrap: wrap;
+    margin: 0!important;
+    width: 100%!important;
+    margin-bottom: 10px!important;
+  }
+  #options section > p:not(.nav) {
+    width: 100%!important;
+    text-align: left;
+  }
+}
+/* Desktop layout */
 header {
   display: flex;
   align-items: center;
@@ -13,9 +40,11 @@ header h1 {
   font-size: 6rem;
   font-family: 'baby_dollregular';
   font-weight: lighter;
-  transform: translateY(-70px);
+  transform: translateY(-60px);
   background-color: var(--app-background);
   background-image: linear-gradient(90deg, #00ffcc, #ffea00, #f262ff);
+  letter-spacing: -5px;
+  filter: drop-shadow(0 2px 4px rgb(41,41,41, .5));
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent; 
@@ -33,8 +62,8 @@ header h1 {
   background: url('../../img/bYoda1_2.png') no-repeat;
   background-blend-mode: multiply;
   background-size: contain;
-  height: 183px;
-  width: 205px;
+  height: 223px;
+  width: 250px;
   margin-top: 20px;
   cursor: pointer;
 }

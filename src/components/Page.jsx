@@ -16,7 +16,7 @@ const Page = () => {
   }, [])
 
   return (
-    <main id="wrapper">
+    <>
       <Header />
       <section id="movie-grid">
         {visibleMovies.map((movie) => (
@@ -25,7 +25,7 @@ const Page = () => {
       </section>
 
       <Footer mentions="mentions légales" />
-    </main>
+    </>
   )
 }
 

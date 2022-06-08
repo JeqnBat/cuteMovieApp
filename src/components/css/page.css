@@ -1,12 +1,18 @@
 /**
- * COMPONENT : Page.js, Header.js, Footer.js
+ * COMPONENT : Page.js
  */
-#wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 1000px;
+ @media screen and (max-width: 999px) {
+  #movie-grid {
+    width: 100%!important;
+    transform: translateY(-270px)!important;
+  }
+  #movie-grid.visible {
+    transform: translateY(0)!important;
+  }
+  .item {
+    width: 100%!important;
+    margin: 10px 30px!important;
+  }
 }
 footer {
   display: flex;
@@ -19,16 +25,11 @@ footer {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
+  width: 1000px;
   background-color: royalblue;
   transform: translateY(-60px);
   transition: all .2s ease-in-out;
 }
 #movie-grid.visible {
   transform: translateY(0);
-}
-/* Responsive layout */
-@media screen and (max-width: 999px) {
-  #wrapper, header {
-    width: auto!important;
-  }
 }
